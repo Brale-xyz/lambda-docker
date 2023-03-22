@@ -18,5 +18,5 @@ ARG ESBUILD_VERSION=0
 RUN npm install --global --unsafe-perm=true esbuild@$ESBUILD_VERSION
 
 # Install the lambda runtime stuff
-RUN npm install aws-lambda-ric
+RUN npm install --global --unsafe-perm=true aws-lambda-ric
 ADD https://github.com/aws/aws-lambda-runtime-interface-emulator/releases/latest/download/aws-lambda-rie /usr/bin/aws-lambda-rie
