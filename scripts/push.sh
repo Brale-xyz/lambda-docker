@@ -2,7 +2,7 @@
 
 set -o errexit -o noclobber -o nounset
 
-NAME=docker-lambda-node-14
+NAME=docker-lambda-node-16
 IMAGE_ID="ghcr.io/brale-xyz/$NAME"
 
 docker build -t $NAME docker
