@@ -1,6 +1,5 @@
-# aws-lambda-ric requires <= node 14
 # https://github.com/aws/aws-lambda-nodejs-runtime-interface-client#requirements
-FROM node:14
+FROM node:16
 
 ENV NODE_ENV=prod
 
