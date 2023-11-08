@@ -14,7 +14,7 @@ on:
   pull_request:
 
 env:
-  NAME: brale-xyz/docker-lambda-node-16
+  NAME: brale-xyz/docker-lambda-node-18
   VERSION: ${{ github.sha }}
 
 jobs:
