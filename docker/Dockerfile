@@ -1,5 +1,5 @@
 # https://github.com/aws/aws-lambda-nodejs-runtime-interface-client#requirements
-FROM node:18
+FROM node:20
 
 ENV NODE_ENV=prod
 
