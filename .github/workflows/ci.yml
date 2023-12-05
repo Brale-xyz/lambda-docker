@@ -1,4 +1,4 @@
-name: Publish
+name: CI
 
 on:
   push:
@@ -14,10 +14,33 @@ on:
   pull_request:
 
 env:
-  NAME: brale-xyz/docker-lambda-node-20
+  NAME: brale-xyz/docker-lambda-node
+  NODE_VERSION: 20
   VERSION: ${{ github.sha }}
 
 jobs:
+  pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build an image from Dockerfile
+        run: |
+          docker build -t ghcr.io/${{env.NAME}}:${{env.VERSION}} ./docker
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ghcr.io/${{env.NAME}}:${{env.VERSION}}
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
   push:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
@@ -43,4 +66,5 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{env.NAME}}:latest
+            ghcr.io/${{env.NAME}}:${{env.NODE_VERSION}}
             ghcr.io/${{env.NAME}}:${{env.VERSION}}
