@@ -15,7 +15,7 @@ on:
 
 env:
   NAME: brale-xyz/docker-lambda-node
-  NODE_VERSION: 20
+  NODE_VERSION: 22
   VERSION: ${{ github.sha }}
 
 jobs:
