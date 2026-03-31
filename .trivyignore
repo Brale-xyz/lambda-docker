@@ -1,2 +1,5 @@
 # Shouldn't impact us: https://avd.aquasec.com/nvd/cve-2023-44487
 CVE-2023-44487
+
+# Shouldn't impact us: https://nvd.nist.gov/vuln/detail/CVE-2026-33671
+CVE-2026-33671
